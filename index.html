@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noheyla Younesse — Portfolio Cybersécurité</title>
+  <meta name="description" content="Portfolio de Noheyla Younesse, étudiante en cybersécurité et réseaux à Lyon, en recherche d'alternance pour septembre 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg2: #ffffff;
+      --bg3: #f0ede6;
+      --border: rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.15);
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #ff7a00;
+      --accent2: #0b1e3a;
+      --warn: #b8720a;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Syne', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-size: 18px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--muted); }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 2.5rem 80px;
+    }
+
+    section:first-of-type { padding-top: 150px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      background: rgba(26,107,90,0.07);
+      border: 1px solid rgba(26,107,90,0.2);
+      padding: 5px 14px;
+      border-radius: 3px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.08em;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    h1 {
+      color: #0b1e3a; /* bleu nuit pour nom */
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 .line2 {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      font-family: var(--mono);
+      font-weight: 300;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-meta-item {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hero-cta,
+    .about-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #e96d00;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: rgba(0,0,0,0.3);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .sep {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 3rem;
+      border-radius: 2px;
+    }
+
+    .about-box,
+    .contact-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .about-point {
+      padding: 14px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .about-point strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+
+    .skill-card:hover { background: var(--bg3); }
+
+    .skill-icon {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .tag.accent {
+      color: var(--accent);
+      border-color: rgba(26,107,90,0.25);
+      background: rgba(26,107,90,0.06);
+    }
+
+    .tag.blue {
+      color: var(--accent2);
+      border-color: rgba(26,80,128,0.25);
+      background: rgba(26,80,128,0.06);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-top: 3px;
+    }
+
+    .timeline-date strong {
+      display: block;
+      color: var(--accent);
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .timeline-content h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .org {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .timeline-bullets li {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .timeline-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .formation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .formation-card {
+      background: var(--bg2);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .formation-card:hover { background: var(--bg3); }
+
+    .formation-year {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .formation-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .formation-card p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .project-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-item:hover { background: var(--bg3); }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .project-status,
+    .project-tech {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+    }
+
+    .status-done {
+      background: rgba(26,107,90,0.08);
+      color: var(--accent);
+      border: 1px solid rgba(26,107,90,0.2);
+    }
+
+    .status-wip {
+      background: rgba(184,114,10,0.08);
+      color: var(--warn);
+      border: 1px solid rgba(184,114,10,0.2);
+    }
+
+    .project-tech {
+      color: var(--accent2);
+      background: rgba(26,80,128,0.06);
+      border: 1px solid rgba(26,80,128,0.2);
+    }
+
+    .project-item h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .project-arrow {
+      color: var(--muted);
+      font-size: 20px;
+      align-self: center;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .project-item:hover .project-arrow {
+      transform: translateX(6px);
+      color: var(--accent2);
+
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    .contact-intro {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--accent); }
+
+    @media (max-width: 1000px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 780px) {
+      .about-grid,
+      .form-row,
+      .formation-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item { gap: 0.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      nav ul { display: none; }
+      section { padding: 90px 1rem 70px; }
+      .contact-box, .about-box { padding: 1.5rem; }
+      .project-item { padding: 1.4rem; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">Noheyla Younesse — Portfolio</div>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="accueil">
+    <div class="hero-tag">
+      Recherche alternance — septembre 2026
+    </div>
+
+    <h1>
+      <span style="color:#0b1e3a;">Noheyla Younesse</span>
+      <span class="line2">Cybersécurité & Réseaux</span>
+    </h1>
+
+    <p class="hero-desc">
+      Étudiante en informatique spécialisée en cybersécurité, intégrant un Mastère à Ynov, avec une expérience en support IT et administration systèmes. Je m’intéresse à l’analyse d’incidents, à la sécurité des réseaux et à la protection des données. Je recherche une alternance à partir de septembre 2026 (2 semaines entreprise / 1 semaine formation).
+    </p>
+
+    <div class="hero-meta">
+      <span class="hero-meta-item">📍 Lyon</span>
+      <span class="hero-meta-item">🎓 Mastère Expert en Cybersécurité — Ynov Campus</span>
+      <span class="hero-meta-item">📆 Disponible dès septembre 2026</span>
+      <span class="hero-meta-item">🚗 Permis B — Véhiculée</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Me contacter</a>
+      <a href="#projets" class="btn btn-outline">Voir mes projets</a>
+      <a href="CV-Noheyla-Younesse.pdf" class="btn btn-outline" target="_blank">Télécharger mon CV</a>
+    </div>
+  </section>
+
+  <section id="projets">
+    <p class="section-label">// 01 — projets & labs</p>
+    <h2>Mes réalisations</h2>
+    <div class="sep"></div>
+
+    <div class="projects-list">
+      <a href="https://github.com/noheyla-younesse/cve-tracker" target="_blank" class="project-item">
+        <div>
+          <div class="project-meta">
+            <span class="project-status status-wip">EN COURS</span>
+            <span class="project-tech">Python</span>
+          </div>
+          <h3>CVE Tracker — Suivi de vulnérabilités</h3>
+          <p class="project-desc">
+            Projet Python de suivi de vulnérabilités avec gestion des CVE, score CVSS, statut de correction, filtrage par sévérité et export de rapport. L'objectif est de simuler une petite logique de gestion de vulnérabilités exploitable dans un contexte SOC ou gouvernance.
+          </p>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://github.com/noheyla-younesse/analyse-trafic-reseau" target="_blank" class="project-item">
+        <div>
+          <div class="project-meta">
+            <span class="project-status status-done">TERMINÉ</span>
+            <span class="project-tech">Wireshark</span>
+          </div>
+          <h3>Analyse de trafic réseau</h3>
+          <p class="project-desc">
+            Analyse de captures réseau avec Wireshark pour observer les protocoles DNS, HTTP et TCP/IP, comprendre les échanges entre machines et identifier des événements réseau simples. Le dépôt peut inclure un compte-rendu, des captures d'écran et une synthèse d'analyse.
+          </p>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://github.com/noheyla-younesse/gestionnaire-logs-systeme" target="_blank" class="project-item">
+        <div>
+          <div class="project-meta">
+            <span class="project-status status-done">TERMINÉ</span>
+            <span class="project-tech">C++</span>
+          </div>
+          <h3>Gestionnaire de logs système</h3>
+          <p class="project-desc">
+            Application CLI orientée journalisation, traçabilité et lecture de fichiers de logs. Le projet met en avant la structure du code, le filtrage, la consultation et l'organisation d'événements système, avec une logique utile pour comprendre l'exploitation des journaux.
+          </p>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://github.com/noheyla-younesse/gestion-vms-postgresql" target="_blank" class="project-item">
+        <div>
+          <div class="project-meta">
+            <span class="project-status status-done">TERMINÉ</span>
+            <span class="project-tech">PostgreSQL</span>
+          </div>
+          <h3>Base de données — Gestion des VMs</h3>
+          <p class="project-desc">
+            Projet de modélisation UML et PostgreSQL autour de la gestion de machines virtuelles : schéma relationnel, contraintes, triggers et requêtes SQL. Il montre une bonne base sur la structuration de données techniques et d'environnements virtualisés.
+          </p>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <p class="section-label">// 01 — à propos</p>
+    <h2>Mon profil</h2>
+    <div class="sep"></div>
+
+    <div class="about-box">
+      <div class="about-grid">
+        <div>
+          <p class="about-text">
+            Étudiante en informatique orientée cybersécurité, je m'intéresse particulièrement à la sécurité opérationnelle, à la gestion des accès et à l'analyse d'événements.
+          </p>
+          <p class="about-text">
+            Grâce à mes expériences en support et administration systèmes et réseaux, j'ai développé rigueur, sens du service et capacité d'adaptation. Je recherche une alternance pour monter en compétences et contribuer à des projets concrets en cybersécurité.
+          </p>
+          <div class="about-cta">
+            <a href="https://github.com/noheyla-younesse" target="_blank" class="btn btn-primary">Voir mon GitHub</a>
+            <a href="https://www.linkedin.com/in/noheyla-younesse/" target="_blank" class="btn btn-outline">Voir mon LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="about-points">
+          <div class="about-point">
+            <strong>Objectif</strong>
+            Trouver une alternance en cybersécurité à partir de septembre 2026.
+          </div>
+          <div class="about-point">
+            <strong>Rythme</strong>
+            2 semaines en entreprise / 1 semaine en formation.
+          </div>
+          <div class="about-point">
+            <strong>Axes d'intérêt</strong>
+            Analyse de logs, réseaux, gestion des accès, incidents, sécurité du SI.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <p class="section-label">// 02 — compétences clés</p>
+    <h2>Compétences techniques</h2>
+    <div class="sep"></div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🔒</div>
+        <h3>Cybersécurité</h3>
+        <div class="tags">
+          <span class="tag accent">RGPD / ANSSI</span>
+          <span class="tag accent">Gestion des accès</span>
+          <span class="tag accent">Analyse de logs</span>
+          <span class="tag accent">Wireshark</span>
+          <span class="tag accent">Traçabilité</span>
+          <span class="tag accent">Sensibilisation</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>Réseaux</h3>
+        <div class="tags">
+          <span class="tag blue">TCP/IP / OSI</span>
+          <span class="tag blue">VLAN</span>
+          <span class="tag blue">DHCP / DNS</span>
+          <span class="tag blue">Adressage IP</span>
+          <span class="tag blue">Segmentation réseau</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <h3>Systèmes & Virtualisation</h3>
+        <div class="tags">
+          <span class="tag">Linux / Windows</span>
+          <span class="tag">Windows Server</span>
+          <span class="tag">Active Directory</span>
+          <span class="tag">VirtualBox</span>
+          <span class="tag">Administration système</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <h3>Support IT & Outils</h3>
+        <div class="tags">
+          <span class="tag">Support N1 / N2</span>
+          <span class="tag">GLPI</span>
+          <span class="tag">Microsoft 365</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Documentation</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <h3>Développement</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">C / C++</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">SQL / PostgreSQL</span>
+          <span class="tag">Git / GitHub</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Autres notions</h3>
+        <div class="tags">
+          <span class="tag">OpenCV</span>
+          <span class="tag">Traitement d'image</span>
+          <span class="tag">IA</span>
+          <span class="tag">Méthodologie projet</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="section-label">// 03 — expériences</p>
+    <h2>Parcours professionnel</h2>
+    <div class="sep"></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <strong>Stage</strong>
+          avr. 2026<br>juin 2026
+        </div>
+        <div class="timeline-content">
+          <h3>Assistante Administration Systèmes & Réseaux</h3>
+          <p class="org">Préfecture du Rhône — Lyon</p>
+          <ul class="timeline-bullets">
+            <li>Support technique multi-sites (postes, incidents, demandes)</li>
+            <li>Gestion des comptes et des accès utilisateurs</li>
+            <li>Résolution de problèmes réseaux et applicatifs</li>
+            <li>Application des règles de sécurité du SI</li>
+            <li>Gestion du parc informatique et des équipements</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <strong>CDD vacataire</strong>
+          Depuis sept. 2025
+        </div>
+        <div class="timeline-content">
+          <h3>Technicienne Support Informatique</h3>
+          <p class="org">Université Lumière Lyon 2 — DSI</p>
+          <ul class="timeline-bullets">
+            <li>Support technique multi-sites sur postes, incidents et demandes utilisateurs</li>
+            <li>Gestion des comptes et des accès utilisateurs</li>
+            <li>Résolution de problèmes réseaux et applicatifs</li>
+            <li>Application des règles de sécurité du système d'information</li>
+            <li>Gestion d'équipements : postes, copieurs et périphériques</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formation">
+    <p class="section-label">// 04 — formation</p>
+    <h2>Parcours académique</h2>
+    <div class="sep"></div>
+
+    <div class="formation-grid">
+      <div class="formation-card">
+        <p class="formation-year">2026 → 2028</p>
+        <h3>Mastère Expert en Cybersécurité — Bac+5</h3>
+        <p>Ynov Campus</p>
+      </div>
+      <div class="formation-card">
+        <p class="formation-year">2023 → 2026</p>
+        <h3>Licence Informatique — Bac+3</h3>
+        <p>Université Lyon 2<br>Systèmes d'information et numérique</p>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="contact">
+    <p class="section-label">// 06 — contact</p>
+    <h2>Me contacter pour une alternance</h2>
+    <div class="sep"></div>
+
+    <div class="contact-box">
+      <p class="contact-intro">
+        Disponible pour une alternance à partir de septembre 2026.<br>
+        Rythme : 2 semaines entreprise / 1 semaine formation — Lyon et alentours.<br>
+        Vous pouvez me contacter pour échanger autour d'une opportunité en cybersécurité, réseaux ou sécurité du SI.
+      </p>
+
+      <form class="contact-form" action="https://formspree.io/f/xjgprrkl" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input id="nom" type="text" name="nom" placeholder="Jean Dupont" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="jean@entreprise.com" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="sujet">Sujet</label>
+          <input id="sujet" type="text" name="sujet" placeholder="Proposition d'alternance cybersécurité...">
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+        </div>
+
+        <div class="form-bottom">
+          <div class="contact-links">
+            <a href="https://github.com/noheyla-younesse" target="_blank" class="contact-link">⌥ GitHub</a>
+            <a href="https://www.linkedin.com/in/noheyla-younesse/" target="_blank" class="contact-link">⌥ LinkedIn</a>
+            <a href="mailto:noheyla.youn@gmail.com" class="contact-link">⌥ noheyla.youn@gmail.com</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    Noheyla Younesse — <span>Cybersécurité & Réseaux</span> — Lyon 2026
+  </footer>
+</body>
+</html>
